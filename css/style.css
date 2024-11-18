@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #333; /* Color de texto general cambiado a gris oscuro */
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: top;
+    background-image: url("../resources/fondo.gif");
+}
+
+header {
+    text-align: center;
+    font-size: 20px;
+}
+
+header h1 {
+    color: white;
+}
+
+.contenido {
+    border: 1px solid #e3726b;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 3px 15px #ff7acd;
+}
+
+input, select {
+    width: 250px;
+    padding: 10px 30px;
+    font-size: 18px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    color: #2c3e50; /* Color de texto oscuro */
+}
+
+/* General para inputs y selects */
+input, select {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background: #f9ce83;
+    color: #333;
+    border: 1px solid #ddd;
+    transition: all 0.4s ease-in-out;
+}
+
+/* Foco en los inputs y selects */
+input:focus, select:focus {
+    border-color: #0e7ead;
+    background-color: #fff;
+    box-shadow: 0 0 8px #31b9b5;
+    outline: none;
+    transform: scale(1.05); /* Animación de aumento */
+}
+
+/* Estilo para el botón de submit */
+input[type=submit] {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 12px 40px;
+    background-color: #4c2449;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+input[type=submit]:hover {
+    background-color: #1c1233;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+input[type=submit]:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.resultados {
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #6c757d; /* Gris oscuro */
+    margin: 15px;
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 3px 15px #ff7acd;
+}
+
+/* Contenedor de las tarjetas */
+.tarjetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Estilo base para las tarjetas */
+.tarjeta {
+    background-color: #9d2f4b;
+    width: 300px;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Hover sobre las tarjetas */
+.tarjeta:hover {
+    background-color: #e06467;
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Animación de aparición de las tarjetas */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Activación de la animación de las tarjetas */
+.tarjeta {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Títulos y detalles dentro de la tarjeta */
+.tarjeta h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.tarjeta h4 {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.tarjeta p {
+    font-size: 16px;
+    color: #ecf0f1; /* Color blanco suave */
+}
+
+/* Animación de las tarjetas */
+@keyframes cardReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplicando animación a las tarjetas */
+.tarjeta {
+    animation: cardReveal 0.5s ease-out forwards;
+}
+
+.sinresultados {
+    color: #540404;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+}
