@@ -26,21 +26,23 @@ function consultar() {
         "&month=" + cbx_mes.value;
 
     fetch(URL_CONSULTA)
-        .then((response) => {
+        .then(response => {
             if (response.status >= 200 && response.status < 300) {
                 return response.json();
             } else {
-                throw new Error("No se puede conectar al servidor");
+                alert("No se puede conectar al servidor");
             }
         })
-        .then((data) => {
+        .then(data => {
             mostrarDiasFestivos(data.holidays);
         })
-        .catch((error) => {
+        .catch(error => {
             console.error(error);
             alert("El API_KEY solo permite consultar los días" +
                 " feriados del año inmediato anterior");
         });
+
+        return false;
 }
 
 
