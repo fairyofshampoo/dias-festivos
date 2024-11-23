@@ -19,30 +19,30 @@ window.onload = function () {
 function consultar() {
     div_resultados.style.display = "none";
 
-    var request = new XMLHttpRequest();
     var URL_CONSULTA = API_URL_BASE + "holidays?" +
         "language=es" + "&key=" + API_KEY +
         "&country=" + cbx_pais.value +
         "&year=" + txt_anio.value +
         "&month=" + cbx_mes.value;
-    console.log(URL_CONSULTA);
-    request.open('GET', URL_CONSULTA, true);
-    request.onload = function () {
-        if (request.status >= 200 && request.status < 300) {
-            var data = JSON.parse(this.response);
-            console.log(data);
+
+    fetch(URL_CONSULTA)
+        .then((response) => {
+            if (response.status >= 200 && response.status < 300) {
+                return response.json();
+            } else {
+                throw new Error("No se puede conectar al servidor");
+            }
+        })
+        .then((data) => {
             mostrarDiasFestivos(data.holidays);
-        } else {
-            alert("No se puede conectar al servidor");
-        }
-    }
-    request.onerror = function () {
-        alert("El API_KEY solo permite consultar los días" +
-            " feriados del año inmediato anterior");
-    };
-    request.send();
-    return false;
+        })
+        .catch((error) => {
+            console.error(error);
+            alert("El API_KEY solo permite consultar los días" +
+                " feriados del año inmediato anterior");
+        });
 }
+
 
 function mostrarDiasFestivos(diasFestivos) {
     div_resultados.style.display = "block";
@@ -69,13 +69,13 @@ function mostrarDiasFestivos(diasFestivos) {
     }
 }
 
-function generarTarjeta(datos){
+function generarTarjeta(datos) {
     console.log(datos);
     return '<div class="tarjeta">' +
         '   <h3>' + datos.name + '</h3>' +
         '   <h4>' + datos.date + '</h4>' +
-        '   <br>'+
-        '   ' + datos.weekday.date.name + 
+        '   <br>' +
+        '   ' + datos.weekday.date.name +
         '</div>';
 
 }
